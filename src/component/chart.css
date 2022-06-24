@@ -1,0 +1,11 @@
+.chart_holder_main{
+    height:60px;
+    color: var(--main-color-second)!important;
+    background-color:var(--bs-green);
+   /* box-shadow: 0 .125rem .25rem var(--main-color-second); */
+}
+
+.chart-btn{
+    font-size: 24px;
+}
+
