@@ -4,7 +4,6 @@ import './chart.css';
 
 function Chart(props) {
 
-    console.log('test');
 
     const PlusOrMinus =(item,type)=>{
         
