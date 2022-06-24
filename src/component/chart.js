@@ -3,6 +3,9 @@ import {setJsonMain,updateInList} from '../Utils.js';
 import './chart.css';
 
 function Chart(props) {
+
+    console.log('test');
+
     const PlusOrMinus =(item,type)=>{
         
         item[type] = parseInt(item[type]) + 1;
