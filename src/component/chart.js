@@ -6,10 +6,11 @@ function Chart(props) {
 
 
     const PlusOrMinus =(item,type)=>{
-        
+        if(item.lock==true){
+            return;
+        }
         item[type] = parseInt(item[type]) + 1;
         item['just_update'] = true;
-        
         updateInList(item);
     }
     
@@ -18,9 +19,9 @@ function Chart(props) {
                     <div className='row mb-3' key={'chart_'+item.title}>
                         <div className='col-12'>
                             <div className='align-items-center chart_holder_main rounded-3 px-2 d-flex justify-content-between '>
-                                <label className='d-flex  align-items-center '  onClick={()=>{PlusOrMinus(item,'negative')}}><i className="bi bi-dash-circle chart-btn  cursor-pointer" ></i><span className="px-2">{item.negative}</span></label>
-                                <label>{item.title} - ({parseInt( item.negative)+parseInt(item.positive)})</label>
-                                <label  className='d-flex  align-items-center'  onClick={()=>{PlusOrMinus(item,'positive')}}><span className="px-2">{item.positive}</span><i className="bi bi-plus-circle chart-btn cursor-pointer" ></i></label>
+                                <label className='d-flex align-items-center'  onClick={()=>{PlusOrMinus(item,'negative')}}><i  className={(item.lock==true?'d-none':'d-flex')+ ' bi bi-dash-circle chart-btn  cursor-pointer'}></i><span className="px-2">{item.lock == false? item.negative: (item.negative == 0 && item.positive==0?'':item.negative)}</span></label>
+                                <label className="flex-fill text-center">{item.title} - ({parseInt( item.negative)+parseInt(item.positive)})</label>
+                                <label   className='d-flex align-items-center'  onClick={()=>{PlusOrMinus(item,'positive')}}><span className="px-2">{item.lock == false? item.positive: (item.negative == 0 && item.positive==0?'':item.positive)}</span><i className={(item.lock==true?' d-none':'d-flex')+ ' bi bi-dash-circle chart-btn  cursor-pointer'} ></i></label>
                             </div>
                         </div>
                     </div>

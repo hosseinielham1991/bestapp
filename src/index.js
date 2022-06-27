@@ -16,6 +16,8 @@ function Templatepp() {
 
     window.INFO = getJsonMain();
     
+    let today = new Date().toLocaleDateString('fa-IR');
+
     Object.defineProperty( window.INFO, 'updater', {
       set(value) {
         setJsonMain();
@@ -52,6 +54,7 @@ function Templatepp() {
                   <div className='col-sm-6 col-xs-12 mb-2 mt-2'>
                     <div  className="card mt-2 bestapp-holer-chart was-validated">
                       <div className="card-body  background-color  ">
+                        <label className="w-100 text-center">{today}</label>
                         <Chart />
                       </div>
                     </div>

@@ -36,13 +36,20 @@ export const setJsonMain = () => {
         setJsonMain();
         return  window.INFO;
     }else{
-        return JSON.parse(list);
+        list = JSON.parse(list);
+        
+        list.list.map((item)=>{
+          (item.lock == undefined? item.lock = false: item.lock=item.lock);
+          return item;
+        })
+        debugger
+        return (list);
     }
 
  };
 
  
- export const updateInList = ({title,negative,positive,just_update=false})=>{
+ export const updateInList = ({title,negative,positive,lock,just_update=false})=>{
     
     if(title == ""){
         return false;
@@ -51,12 +58,12 @@ export const setJsonMain = () => {
     var index = window.INFO.list.findIndex(o => o['title'] === title);
     
     if (index === -1) {
-      window.INFO.list.push({title:title,negative:negative,positive:positive});
+      window.INFO.list.push({title:title,negative:negative,lock:lock,positive:positive});
     }
     else {
         if(just_update == false)
             return false;
-      window.INFO.list[index] = {title:title,negative:negative,positive:positive};
+      window.INFO.list[index] = {title:title,negative:negative,lock:lock,positive:positive};
         
     }
 

@@ -4,7 +4,8 @@ import {updateInList,deleteinlist} from '../Utils.js';
 function Inputs(props){
     
     let negative_value = props.data.negative,
-    positive_value =  props.data.positive;
+    positive_value =  props.data.positive,
+    lock = props.data.lock;
 
     const [negative,  setnegative] = useState(props.data.negative);
     const [positive, setpositive] = useState(props.data.positive);
@@ -12,11 +13,16 @@ function Inputs(props){
     useEffect(() => {
         negative_value = negative;
         positive_value  = positive ;
-        updateInList({title:props.data.title,negative:negative,positive:positive,just_update:true});
+        updateInList({title:props.data.title,negative:negative,positive:positive,lock:lock,just_update:true});
      }, [negative,positive]);
 
     const deleteinputs = ()=>{
         deleteinlist({title:props.data.title});
+    }
+
+    const changelock = ()=>{
+        debugger
+        updateInList({title:props.data.title,negative:negative,positive:positive,lock:!lock,just_update:true});
     }
 
     return  <div className="row">
@@ -26,9 +32,10 @@ function Inputs(props){
                             <div className="row">
                                 <div className=" col-12 ">
                                     <div className="mb-3 d-flex justify-content-between align-items-center ">
-                                        <label className="col-form-label">{props.data.title}</label>
-                                        <label className='inputs-delete_btn cursor-pointer' onClick={()=>{deleteinputs()}} ><i className="bi bi-trash-fill  text-danger " ></i></label>
-                                    </div>
+                                        <label className="col-form-label flex-fill">{props.data.title}</label>
+                                        <label className='inputs-lock-btn mx-2 cursor-pointer' onClick={()=>{changelock()}} ><i className={'bi bi-'+(lock==false?'unlock-fill':'lock-fill')}  ></i></label>
+                                        <label className='inputs-delete-btn cursor-pointer' onClick={()=>{deleteinputs()}} ><i className="bi bi-trash-fill  text-danger " ></i></label>
+                                           </div>
                                 </div>
                                 <div className=" col-lg-6 col-6">
                                     <div className="input-group mb-3">
