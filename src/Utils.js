@@ -42,7 +42,7 @@ export const setJsonMain = () => {
           (item.lock == undefined? item.lock = false: item.lock=item.lock);
           return item;
         })
-        debugger
+        
         return (list);
     }
 
@@ -80,7 +80,7 @@ export const setJsonMain = () => {
   }    
 
   export const deleteAllList = ()=>{
-    debugger
+    
     window.INFO.list =[]; 
     window.INFO.updater = true;
 
