@@ -30,7 +30,7 @@ function Chart(props) {
                                 <label className="flex-fill text-center">{item.title + sum}</label>
                                 <label  className={(item.lock==true?'d-none':'d-flex') + ' align-items-center'}  onClick={()=>{PlusOrMinus(item,'positive')}}>
                                     <span className="px-2">{item.positive}</span>
-                                    <i className='bi bi-dash-circle chart-btn  cursor-pointer' ></i>
+                                    <i className='bi bi-plus-circle chart-btn  cursor-pointer' ></i>
                                 </label>
                             </div>
                         </div>
